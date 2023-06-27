@@ -1,38 +1,68 @@
-from collections import namedtuple
-import altair as alt
-import math
-import pandas as pd
 import streamlit as st
+import pandas as pd
 
-"""
-# Welcome to Streamlit!
+def processa ( df ):
+    curso = st.text_input('Nome do curso e/ou turma:')
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
+    st.session_state.visibility = "visible"
+    st.session_state.disabled = False
+    st.session_state.horizontal = True
 
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+    turno = st.radio(
+        "Turno",
+        ["Manha","Tarde","Manha/Tarde"],
+        key="Manha",
+        label_visibility = st.session_state.visibility,
+        disabled=st.session_state.disabled,
+        horizontal=st.session_state.horizontal)
+    
+    municipio = st.text_input("Municipio:")
+    data_inicio_curso = st.date_input("Data de inicio do curso:")
+    data_inicio_ferias = st.date_input("Férias - data de inicio:")
+    data_final_ferias = st.date_input("Férias - data final:")
+    ch_total = st.text_input("Carga horária:", max_chars=4)
+    ch_teorica = st.text_input("Carga horária teórica:", max_chars=3)
+    ch_inicial = st.text_input("Formacao inicial(CH):", max_chars=2)
+    horas_semana = st.text_input("Horas Teoricas por semana:", max_chars=1)
 
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
+    st.session_state.visibility = "visible"
+    st.session_state.disabled = False
+    st.session_state.horizontal = True
 
+    dia_semana = st.radio(
+        "Aulas fixas",
+        ["seg","ter","qua", "qui", "sex"],
+        key="seg",
+        label_visibility = st.session_state.visibility,
+        disabled=st.session_state.disabled,
+        horizontal=st.session_state.horizontal)
 
-with st.echo(code_location='below'):
-    total_points = st.slider("Number of points in spiral", 1, 5000, 2000)
-    num_turns = st.slider("Number of turns in spiral", 1, 100, 9)
+    semana_complementar = st.radio(
+        "Aulas complementares - semana",
+        ["nenhum","primeira","segunda","terceira","quarta"],
+        key="nenhuma",
+        label_visibility = st.session_state.visibility,
+        disabled=st.session_state.disabled,
+        horizontal=st.session_state.horizontal)
 
-    Point = namedtuple('Point', 'x y')
-    data = []
+    dia_complementar = st.radio(
+        "Dia para aulas complementares",
+        ["nenhum","seg","ter","qua","qui","sex"],
+        key="nenhum",
+        label_visibility = st.session_state.visibility,
+        disabled=st.session_state.disabled,
+        horizontal=st.session_state.horizontal)
 
-    points_per_turn = total_points / num_turns
+    return curso, turno, municipio, data_inicio_curso, data_inicio_ferias, data_final_ferias, ch_total, ch_teorica, ch_inicial, horas_semana, dia_semana, semana_complementar, dia_complementar
 
-    for curr_point_num in range(total_points):
-        curr_turn, i = divmod(curr_point_num, points_per_turn)
-        angle = (curr_turn + 1) * 2 * math.pi * i / points_per_turn
-        radius = curr_point_num / total_points
-        x = radius * math.cos(angle)
-        y = radius * math.sin(angle)
-        data.append(Point(x, y))
-
-    st.altair_chart(alt.Chart(pd.DataFrame(data), height=500, width=500)
-        .mark_circle(color='#0068c9', opacity=0.5)
-        .encode(x='x:Q', y='y:Q'))
+st.title( 'Calendário - Tela Inicial')
+            
+arquivo = st.file_uploader( 
+    'Upload do arquivo de feriados e recessos:',
+    type='csv')
+if arquivo :
+    df = pd.read_csv( arquivo )
+    st.dataframe( df )
+    st.text(processa( df ))
+else:
+    st.error(' * Falta realizar UPLoad de arquivo .csv com feriados *')
