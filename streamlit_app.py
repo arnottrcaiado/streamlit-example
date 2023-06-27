@@ -58,10 +58,11 @@ def processa ( df ):
 st.title( 'Calendário - Tela Inicial')
             
 arquivo = st.file_uploader( 
-    'Upload do arquivo de feriados e recessos:',
-    type='csv')
+    'Upload do arquivo de feriados e recessos:', type='xlsx'
+    # type='csv')
 if arquivo :
-    df = pd.read_csv( arquivo )
+    # df = pd.read_csv( arquivo )
+    df = pd.read_excel( arquivo )
     st.dataframe( df )
     st.text(processa( df ))
 else:
