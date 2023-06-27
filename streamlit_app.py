@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import openpyxl
 
 def processa ( df ):
     curso = st.text_input('Nome do curso e/ou turma:')
