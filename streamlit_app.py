@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-def mostra( dados ):
+def mostra( data ):
     st.title("Calendário de Aulas")
 #    st.image("../static/img/ciee.jpg")
 
