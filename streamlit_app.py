@@ -3,7 +3,7 @@ import pandas as pd
 
 def mostra( dados ):
     st.title("Calendário de Aulas")
-    st.image("../static/img/ciee.jpg")
+#    st.image("../static/img/ciee.jpg")
 
     st.header("Calendário")
     st.markdown(
