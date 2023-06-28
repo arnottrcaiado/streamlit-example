@@ -3,7 +3,6 @@ import pandas as pd
 
 def mostra( data ):
 #    st.image("../static/img/ciee.jpg")
-
     st.header("Calendário")
     st.write("- Curso: {{curso}} Turno:{{turno}}")
     st.write("- Carga horária diária: {{chDiaria}} h")
@@ -14,7 +13,14 @@ def mostra( data ):
     st.write("- Formação Final: {{formacaoFinal}}")
     st.write("- Férias: {{periodoFerias}}")
     st.write("- Inicio e Térmio do Contrato: {{inicioeTermino}}")
+    st.write("")
 
+    # Converter os dados em um DataFrame
+    df = pd.DataFrame(data, columns=["Mês", "Ano", "Calendário", "Aulas Teóricas", "Práticas", "CH Mensal"])
+
+    # Exibir o DataFrame usando a função `st.table()`
+    st.table(df)
+    
     st.header("Tabela de Calendário")
     st.write("Legenda:")
     st.write("- [__] = Formação Inicial (i)")
@@ -25,16 +31,6 @@ def mostra( data ):
     st.write("- [__] = Finais de Semanas (x)")
     st.write("- [__] = Feriados (X)")
     st.write("- [__] = Férias")
-
-    st.write("")
-
-    # Converter os dados em um DataFrame
-    df = pd.DataFrame(data, columns=["Mês", "Ano", "Calendário", "Aulas Teóricas", "Práticas", "CH Mensal"])
-
-    # Exibir o DataFrame usando a função `st.table()`
-    st.table(df)
-
-
 
 def processa ( df ):
     curso = st.text_input('Nome do curso e/ou turma:')
