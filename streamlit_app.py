@@ -19,7 +19,8 @@ def mostra( data ):
     df = pd.DataFrame(data, columns=["Mês", "Ano", "Calendário", "Aulas Teóricas", "Práticas", "CH Mensal"])
 
     # Exibir o DataFrame usando a função `st.table()`
-    st.table(df)
+    if st.button('Feriados e Recessos'):
+        st.table(df)
     
     st.header("Tabela de Calendário")
     st.write("Legenda:")
