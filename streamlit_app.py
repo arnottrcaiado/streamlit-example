@@ -17,6 +17,7 @@ def mostra( data ):
 
     # Converter os dados em um DataFrame
     df = pd.DataFrame(data, columns=["Mês", "Ano", "Calendário", "Aulas Teóricas", "Práticas", "CH Mensal"])
+    
 
     # Exibir o DataFrame usando a função `st.table()`
     #    st.table(df)
@@ -94,16 +95,16 @@ arquivo = st.file_uploader(
 if arquivo :
     df = pd.read_csv( arquivo )
     # Converter os dados em um DataFrame
-    df_data = pd.DataFrame(df, columns=["Mês", "Ano", "Calendário", "Aulas Teóricas", "Práticas", "CH Mensal"])
+    # df_data = pd.DataFrame(df, columns=["Mês", "Ano", "Calendário", "Aulas Teóricas", "Práticas", "CH Mensal"])
 
     # Exibir o DataFrame usando a função `st.table()`
     #    st.table(df)
     
     # df = pd.read_excel( arquivo )
     if st.button('Feriados e Recessos'):
-        st.table(df_data)
-        st.dataframe( df_data )
-        st.text(processa( df_data ))
+        st.table(df)
+        st.dataframe( df )
+        st.text(processa( df ))
         
    
     dados = [
