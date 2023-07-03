@@ -103,8 +103,8 @@ if arquivo :
     # df = pd.read_excel( arquivo )
     if st.button('Feriados e Recessos'):
         st.table(df)
-        st.dataframe( df )
-        st.text(processa( df ))
+        # st.dataframe( df )
+        # st.text(processa( df ))
         
    
     dados = [
