@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-def mostra( data ):
+def mostra( data, curso, turno, municipio, data_inicio_curso, data_inicio_ferias, data_final_ferias, ch_total, ch_teorica, ch_inicial, horas_semana, dia_semana, semana_complementar, dia_complementar ):
 #    st.image("../static/img/ciee.jpg")
     st.header("Calendário")
     st.write("- Curso: {{curso}} Turno:{{turno}}")
@@ -104,14 +104,13 @@ if arquivo :
     if st.button('Feriados e Recessos'):
         st.table(df)
         # st.dataframe( df )
-        st.text(processa( df ))
-        
+    st.text(processa( df ))
    
     dados = [
     "01;2023;01-02-t;02-03-p;03-04-t;04-05-x;05-06-T;06-07-t;07-08-p;08-09-t;09-10-t;10-11-t;11-12-T;12-13-t;13-14-p;14-15-t;15-16-t;16-17-T;17-18-t;18-19-x;19-20-t;20-21-t;21-22-p;22-23-t;23-24-t;24-25-t;25-26-T;26-27-t;27-28-p;28-29-t;29-30-t;30-31-t;31-01-r;26;05;31",
     "02;2023;01-02-T;02-03-t;03-04-t;04-05-p;05-06-t;06-07-t;07-08-T;08-09-t;09-10-t;10-11-t;11-12-t;12-13-T;13-14-t;14-15-p;15-16-t;16-17-t;17-18-t;18-19-t;19-20-T;20-21-t;21-22-p;22-23-t;23-24-t;24-25-t;25-26-t;26-27-T;27-28-t;28-01-r;22;06;31",
     "03;2023;01-02-t;02-03-p;03-04-t;04-05-x;05-06-T;06-07-t;07-08-p;08-09-t;09-10-t;10-11-t;11-12-T;12-13-t;13-14-p;14-15-t;15-16-t;16-17-T;17-18-t;18-19-x;19-20-t;20-21-t;21-22-p;22-23-t;23-24-t;24-25-t;25-26-T;26-27-t;27-28-p;28-29-t;29-30-t;30-31-t;31-01-r;26;05;31",
     ]
-    mostra( dados )
+    mostra( dados, curso, turno, municipio, data_inicio_curso, data_inicio_ferias, data_final_ferias, ch_total, ch_teorica, ch_inicial, horas_semana, dia_semana, semana_complementar, dia_complementar )
 else:
     st.error(' * Falta realizar UPLoad de arquivo .csv com feriados *')
