@@ -104,7 +104,7 @@ if arquivo :
     if st.button('Feriados e Recessos'):
         st.table(df)
         # st.dataframe( df )
-        # st.text(processa( df ))
+        st.text(processa( df ))
         
    
     dados = [
