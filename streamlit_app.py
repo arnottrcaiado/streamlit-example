@@ -15,12 +15,20 @@ def mostra( data, curso, turno, municipio, data_inicio_curso, data_inicio_ferias
     st.write("- Inicio e Térmio do Contrato:",data_inicio_curso)
     st.write("")
 
-    # Converter os dados em um DataFrame
-    df = pd.DataFrame(data, columns=["Mês", "Ano", "Calendário", "Aulas Teóricas", "Práticas", "CH Mensal"])
-    
+    # Dividir cada string em uma lista de elementos
+    dados_divididos = [d.split(';') for d in data]
+
+    # Criar o DataFrame
+    df = pd.DataFrame(dados_divididos, columns=['Dia', 'Ano', 'Dados'])
+
+    # Dividir a coluna 'Dados' em várias colunas
+    df[['Hora', 'Valor']] = df['Dados'].str.split('-', expand=True)
+
+    # Remover a coluna 'Dados'
+    df = df.drop('Dados', axis=1)
 
     # Exibir o DataFrame usando a função `st.table()`
-    #    st.table(df)
+    st.table(df)
     
     st.header("Tabela de Calendário")
     st.write("Legenda:")
