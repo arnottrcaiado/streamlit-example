@@ -95,7 +95,8 @@ if arquivo :
     # df = pd.read_excel( arquivo )
     if st.button('Feriados e Recessos') and not tabelaFeriados :
         tabelaFeriados = True
-        st.table(df1=df)
+        df1=df
+        st.table(df1)
     else :
         df1=pd.DataFrame()
         st.table(df1)
