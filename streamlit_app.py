@@ -86,21 +86,18 @@ def inicia ( df ):
     return curso, turno, municipio, data_inicio_curso, data_inicio_ferias, data_final_ferias, ch_total, ch_teorica, ch_inicial, horas_semana, dia_semana, semana_complementar, dia_complementar
 
 st.title( 'Calendário - Tela Inicial')
-tabelaFeriados = False     
 arquivo = st.file_uploader( 
     'Upload do arquivo de feriados e recessos:',
     type='csv')
 if arquivo :
     df = pd.read_csv( arquivo )
     # df = pd.read_excel( arquivo )
-    if st.button('Feriados e Recessos') and not tabelaFeriados :
-        tabelaFeriados = True
+    if st.button('Feriados e Recessos') :
         df1=df
         st.table(df1)
-    else :
+    elif st.button('Ocultar tabela')  :
         df1=pd.DataFrame()
         st.table(df1)
-        tabelaFeriados = False
         # st.dataframe( df )
     # st.text(curso, turno, municipio, data_inicio_curso, data_inicio_ferias, data_final_ferias, ch_total, ch_teorica, ch_inicial, horas_semana, dia_semana, semana_complementar, dia_complementar=processa( df ))
     curso, turno, municipio, data_inicio_curso, data_inicio_ferias, data_final_ferias, ch_total, ch_teorica, ch_inicial, horas_semana, dia_semana, semana_complementar, dia_complementar=inicia( df )
