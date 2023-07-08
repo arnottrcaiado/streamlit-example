@@ -95,7 +95,7 @@ if arquivo :
     if st.button('Feriados e Recessos') :
         df1=df
         st.table(df1)
-    elif st.button('Ocultar tabela')  :
+    if st.button('Ocultar tabela')  :
         df1=pd.DataFrame()
         st.table(df1)
         # st.dataframe( df )
