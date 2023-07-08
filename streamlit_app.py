@@ -103,6 +103,7 @@ if arquivo :
         tabelaFeriados = True
         st.table(df)
     else :
+        st.table(Null)
         tabelaFeriados = False
         # st.dataframe( df )
     # st.text(curso, turno, municipio, data_inicio_curso, data_inicio_ferias, data_final_ferias, ch_total, ch_teorica, ch_inicial, horas_semana, dia_semana, semana_complementar, dia_complementar=processa( df ))
