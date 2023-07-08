@@ -478,7 +478,8 @@ if arquivo :
         st.table(df1)
     if st.button('Ocultar tabela')  :
         df1=pd.DataFrame()
-        st.table(df1)
+        # st.table(df1)
+        st.empty()
         # st.dataframe( df )
     # st.text(curso, turno, municipio, data_inicio_curso, data_inicio_ferias, data_final_ferias, ch_total, ch_teorica, ch_inicial, horas_semana, dia_semana, semana_complementar, dia_complementar=processa( df ))
     curso, turno, municipio, data_inicio_curso, data_inicio_ferias, data_final_ferias, ch_total, ch_teorica, ch_inicial, horas_semana, dia_semana, semana_complementar, dia_complementar=inicia( df )
