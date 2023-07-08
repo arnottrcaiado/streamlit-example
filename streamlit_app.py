@@ -98,7 +98,7 @@ if arquivo :
         tabelaFeriados = True
         st.table(df)
     else :
-        df=pd.dataframe()
+        df=pd.DataFrame()
         st.table(df)
         tabelaFeriados = False
         # st.dataframe( df )
