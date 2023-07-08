@@ -92,14 +92,13 @@ arquivo = st.file_uploader(
     type='csv')
 if arquivo :
     df = pd.read_csv( arquivo )
-    
     # df = pd.read_excel( arquivo )
     if st.button('Feriados e Recessos') and not tabelaFeriados :
         tabelaFeriados = True
-        st.table(df)
+        st.table(df1=df)
     else :
-        df=pd.DataFrame()
-        st.table(df)
+        df1=pd.DataFrame()
+        st.table(df1)
         tabelaFeriados = False
         # st.dataframe( df )
     # st.text(curso, turno, municipio, data_inicio_curso, data_inicio_ferias, data_final_ferias, ch_total, ch_teorica, ch_inicial, horas_semana, dia_semana, semana_complementar, dia_complementar=processa( df ))
