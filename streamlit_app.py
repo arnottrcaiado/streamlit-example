@@ -31,7 +31,7 @@ def mostra( data, curso, turno, municipio, data_inicio_curso, data_inicio_ferias
     st.write("- [__] = Feriados (X)")
     st.write("- [__] = Férias")
 
-def processa ( df ):
+def inicia ( df ):
     curso = st.text_input('Nome do curso e/ou turma:')
 
     st.session_state.visibility = "visible"
@@ -86,7 +86,7 @@ def processa ( df ):
     return curso, turno, municipio, data_inicio_curso, data_inicio_ferias, data_final_ferias, ch_total, ch_teorica, ch_inicial, horas_semana, dia_semana, semana_complementar, dia_complementar
 
 st.title( 'Calendário - Tela Inicial')
-            
+tabelaFeriados = False     
 arquivo = st.file_uploader( 
     'Upload do arquivo de feriados e recessos:',
     type='csv')
@@ -99,11 +99,13 @@ if arquivo :
     #    st.table(df)
     
     # df = pd.read_excel( arquivo )
-    if st.button('Feriados e Recessos'):
+    if st.button('Feriados e Recessos') and not tabelaFeriados :
         st.table(df)
+    else :
+        st.table(Null)
         # st.dataframe( df )
     # st.text(curso, turno, municipio, data_inicio_curso, data_inicio_ferias, data_final_ferias, ch_total, ch_teorica, ch_inicial, horas_semana, dia_semana, semana_complementar, dia_complementar=processa( df ))
-    curso, turno, municipio, data_inicio_curso, data_inicio_ferias, data_final_ferias, ch_total, ch_teorica, ch_inicial, horas_semana, dia_semana, semana_complementar, dia_complementar=processa( df )
+    curso, turno, municipio, data_inicio_curso, data_inicio_ferias, data_final_ferias, ch_total, ch_teorica, ch_inicial, horas_semana, dia_semana, semana_complementar, dia_complementar=inicia( df )
 
     
     dados = [
