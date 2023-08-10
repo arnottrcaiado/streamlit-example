@@ -471,7 +471,7 @@ arquivo = st.file_uploader(
     'Upload do arquivo de feriados e recessos:',
     type='csv')
 if arquivo :
-    df = pd.read_csv( arquivo )
+    df = pd.read_csv( arquivo , sep=';')
     # df = pd.read_excel( arquivo )
     if st.button('Feriados e Recessos') :
         df1=df
